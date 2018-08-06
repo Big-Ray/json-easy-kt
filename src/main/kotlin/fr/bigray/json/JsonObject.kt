@@ -1,5 +1,6 @@
 package fr.bigray.json
 
+import fr.bigray.parser.JsonParser
 import fr.bigray.utils.WrapValue
 
 class JsonObject private constructor() : LinkedHashMap<String, JsonValue>(), JsonValue {
@@ -11,6 +12,7 @@ class JsonObject private constructor() : LinkedHashMap<String, JsonValue>(), Jso
 
     companion object {
         fun createObject(): JsonObject = JsonObject()
+        fun fromJson(json: String): JsonObject = JsonParser.parse(json) as JsonObject
     }
 
     fun en(key: String, entry: Any?): JsonObject {

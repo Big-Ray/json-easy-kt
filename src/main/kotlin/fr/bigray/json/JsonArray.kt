@@ -1,5 +1,6 @@
 package fr.bigray.json
 
+import fr.bigray.parser.JsonParser
 import fr.bigray.utils.WrapValue
 
 class JsonArray private constructor() : ArrayList<JsonValue>(), JsonValue {
@@ -10,6 +11,7 @@ class JsonArray private constructor() : ArrayList<JsonValue>(), JsonValue {
 
     companion object {
         fun createArray(): JsonArray = JsonArray()
+        fun fromJson(json: String): JsonArray = JsonParser.parse(json) as JsonArray
     }
 
     fun el(entry: Any?): JsonArray {
@@ -21,5 +23,6 @@ class JsonArray private constructor() : ArrayList<JsonValue>(), JsonValue {
         this.addAll(entries)
         return this
     }
+
 
 }
