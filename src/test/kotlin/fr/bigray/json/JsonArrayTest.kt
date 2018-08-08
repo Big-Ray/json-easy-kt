@@ -1,10 +1,9 @@
 package fr.bigray.json
 
-import org.junit.Test
-
-import org.junit.Assert.*
 import java.math.BigDecimal
 import java.math.BigInteger
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class JsonArrayTest {
 

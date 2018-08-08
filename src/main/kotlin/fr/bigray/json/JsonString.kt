@@ -3,7 +3,7 @@ package fr.bigray.json
 class JsonString(override val value: String = "null"): JsonValue {
 
     override fun toJson(): String {
-        return String.format("\"%s\"", this.value.trim())
+        return "\"${value.trim()}\""
     }
 
     override fun toString(): String {

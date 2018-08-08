@@ -1,11 +1,11 @@
 package fr.bigray.utils
 
 import fr.bigray.json.*
-import org.junit.Test
-
-import org.junit.Assert.*
 import java.math.BigDecimal
 import java.math.BigInteger
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class WrapValueTest {
 
@@ -21,6 +21,8 @@ class WrapValueTest {
         val aLong = 1L
         val aBoolean = true
 
+        val aValueNotKnown = listOf<Pair<*, *>>()
+
         assertTrue(WrapValue.wrap(jsonObject) is JsonObject)
         assertTrue(WrapValue.wrap(jsonArray) is JsonArray)
         assertTrue(WrapValue.wrap(aString) is JsonString)
@@ -31,12 +33,8 @@ class WrapValueTest {
         assertTrue(WrapValue.wrap(aLong) is JsonNumber)
         assertTrue(WrapValue.wrap(aBoolean) is JsonBoolean)
 
-    }
+        assertFailsWith(Exception::class) { WrapValue.wrap(aValueNotKnown) }
 
-    @Test(expected = Exception::class)
-    fun wrap_with_exception() {
-        val aValueNotKnown = listOf<Pair<*, *>>()
-        WrapValue.wrap(aValueNotKnown)
     }
 
     @Test

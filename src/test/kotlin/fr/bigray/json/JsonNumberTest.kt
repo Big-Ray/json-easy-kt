@@ -1,7 +1,7 @@
 package fr.bigray.json
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class JsonNumberTest {
@@ -31,7 +31,7 @@ class JsonNumberTest {
         val actual1 = JsonNumber(12.34)
         val actual2 = JsonNumber(12.34)
 
-        assertTrue(actual1.equals(actual2))
+        assertTrue(actual1 == actual2)
     }
 
     @Test

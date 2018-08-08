@@ -1,8 +1,9 @@
 package fr.bigray.json
 
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
-import org.junit.Assert.*
 
 class JsonStringTest {
 
@@ -18,13 +19,18 @@ class JsonStringTest {
 
     @Test
     fun `to String`() {
+        val actual = JsonString("value")
+        val expected = "JsonString(value='value')"
+
+        assertEquals(expected, actual.toString())
     }
 
     @Test
     fun equals() {
+        val actual1 = JsonString("value")
+        val actual2 = JsonString("value")
+
+        assertTrue(actual1 == actual2)
     }
 
-    @Test
-    fun getValue() {
-    }
 }

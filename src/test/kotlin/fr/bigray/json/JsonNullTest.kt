@@ -1,15 +1,12 @@
 package fr.bigray.json
 
-import org.junit.Test
-
-import org.junit.Assert.*
-import org.junit.Before
+import kotlin.test.*
 
 class JsonNullTest {
 
     private lateinit var actual: JsonNull
 
-    @Before
+    @BeforeTest
     fun init() {
         actual = JsonNull.NULL
     }
@@ -32,6 +29,6 @@ class JsonNullTest {
     @Test
     fun equals() {
         val otherNull: JsonNull = JsonNull.NULL
-        assertTrue(actual.equals(otherNull))
+        assertTrue(actual == otherNull)
     }
 }

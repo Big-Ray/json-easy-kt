@@ -10,8 +10,8 @@ class JsonArray private constructor() : ArrayList<JsonValue>(), JsonValue {
     override fun toJson(): String = this.joinToString(prefix = "[", postfix = "]", separator = ",") { it.toJson() }
 
     companion object {
-        fun createArray(): JsonArray = JsonArray()
-        fun fromJson(json: String): JsonArray = JsonParser.parse(json) as JsonArray
+        @JvmStatic fun createArray(): JsonArray = JsonArray()
+        @JvmStatic fun fromJson(json: String): JsonArray = JsonParser.parse(json) as JsonArray
     }
 
     fun el(entry: Any?): JsonArray {

@@ -1,14 +1,12 @@
 package fr.bigray.json
 
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.*
 
 class JsonObjectTest {
 
     private lateinit var actual: JsonObject
 
-    @Before
+    @BeforeTest
     fun init() {
         val address = JsonObject.createObject()
                 .en("number", 4)

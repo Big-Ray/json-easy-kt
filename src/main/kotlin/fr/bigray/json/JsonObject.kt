@@ -11,8 +11,8 @@ class JsonObject private constructor() : LinkedHashMap<String, JsonValue>(), Jso
     { "\"${it.key}\":${it.value.toJson()}" }
 
     companion object {
-        fun createObject(): JsonObject = JsonObject()
-        fun fromJson(json: String): JsonObject = JsonParser.parse(json) as JsonObject
+        @JvmStatic fun createObject(): JsonObject = JsonObject()
+        @JvmStatic fun fromJson(json: String): JsonObject = JsonParser.parse(json) as JsonObject
     }
 
     fun en(key: String, entry: Any?): JsonObject {
