@@ -16,28 +16,15 @@ object WrapValue {
 
     fun wrapStringValue(value: String): JsonValue {
         return when {
-            stringIsBoolean(value) -> JsonBoolean(value.toBoolean())
-            stringIsNull(value) -> JsonNull()
-            stringIsNumber(value) -> JsonNumber(value.toBigDecimal())
+            isBoolean(value) -> JsonBoolean(value.toBoolean())
+            isNull(value) -> JsonNull()
+            isNumber(value) -> JsonNumber(value.toBigDecimal())
             else -> JsonString(value)
         }
     }
 
-    private fun stringIsNumber(value: String): Boolean {
-        try {
-            value.toBigDecimal()
-        } catch (e: NumberFormatException) {
-            return false
-        }
+    private val isNumber = { value: String -> value.toBigDecimal().let { true } }
+    private val isBoolean = { value: String -> value.toBoolean() || java.lang.Boolean.FALSE.toString() == value }
+    private val isNull = { value: String? -> value.isNullOrEmpty() || value == "null" }
 
-        return true
-    }
-
-    private fun stringIsBoolean(value: String): Boolean {
-        return value.toBoolean() || java.lang.Boolean.FALSE.toString() == value
-    }
-
-    private fun stringIsNull(value: String?): Boolean {
-        return value.isNullOrEmpty() || value == "null"
-    }
 }

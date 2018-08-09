@@ -34,9 +34,4 @@ class JsonNumberTest {
         assertTrue(actual1 == actual2)
     }
 
-    @Test
-    fun `to string`() {
-        val actual = JsonNumber(12.34)
-        assertEquals("JsonNumber(value=12.34)", actual.toString())
-    }
 }

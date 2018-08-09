@@ -22,11 +22,6 @@ class JsonNullTest {
     }
 
     @Test
-    fun `to String`() {
-        assertEquals("JsonNull()", actual.toString())
-    }
-
-    @Test
     fun equals() {
         val otherNull: JsonNull = JsonNull.NULL
         assertTrue(actual == otherNull)
