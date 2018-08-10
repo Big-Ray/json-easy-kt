@@ -2,27 +2,27 @@ package fr.bigray.json
 
 import kotlin.test.*
 
-class JsonObjectTest {
+class KjsonObjectTest {
 
-    private lateinit var actual: JsonObject
+    private lateinit var actual: KjsonObject
 
     @BeforeTest
     fun init() {
-        val address = JsonObject.createObject()
+        val address = KjsonObject.createObject()
                 .en("number", 4)
-                .en("zipCode", JsonNumber(17540))
+                .en("zipCode", KjsonNumber(17540))
                 .en("street", "Chemin de la gare")
-                .en("city", JsonString("Le Gué d'Alleré"))
+                .en("city", KjsonString("Le Gué d'Alleré"))
                 .en("digiCode", null)
 
-        actual = JsonObject.createObject()
-                .en("firstName", JsonString("John"))
-                .en("lastName", JsonString("Doe"))
-                .en("age", JsonNumber(40))
-                .en("isStrong", JsonBoolean(true))
-                .en("address", JsonObject.createObject()
+        actual = KjsonObject.createObject()
+                .en("firstName", KjsonString("John"))
+                .en("lastName", KjsonString("Doe"))
+                .en("age", KjsonNumber(40))
+                .en("isStrong", KjsonBoolean(true))
+                .en("address", KjsonObject.createObject()
                         .allEn(address))
-                .en("hobbies", JsonArray.createArray()
+                .en("hobbies", KjsonArray.createArray()
                         .el("F1")
                         .el("Rally")
                         .el("Music"))

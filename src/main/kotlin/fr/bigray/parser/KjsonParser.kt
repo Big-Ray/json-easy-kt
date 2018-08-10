@@ -3,7 +3,7 @@ package fr.bigray.parser
 import fr.bigray.json.*
 import fr.bigray.utils.WrapValue.wrapStringValue
 
-object JsonParser {
+object KjsonParser {
     private const val OPEN_BRACE = 123
     private const val CLOSE_BRACE = 125
     private const val OPEN_BRACKET = 91
@@ -11,13 +11,13 @@ object JsonParser {
     private const val DBL_QUOTE = 34
     private const val COMMA = 44
 
-    fun parse(json: String): JsonValue? {
+    fun parse(json: String): KjsonValue? {
         val firstCharacter = json.first().toInt()
         val lastCharacter = json.last().toInt()
 
         when {
             (OPEN_BRACE == firstCharacter).and(CLOSE_BRACE == lastCharacter) -> {
-                val jsonValue = JsonObject.createObject()
+                val jsonValue = KjsonObject.createObject()
 
                 split(json)
                         .map { it.trim().split(":".toRegex(), 2).toTypedArray() }
@@ -35,7 +35,7 @@ object JsonParser {
                 return jsonValue
             }
             (OPEN_BRACKET == firstCharacter).and(CLOSE_BRACKET == lastCharacter) -> {
-                val jsonValue = JsonArray.createArray()
+                val jsonValue = KjsonArray.createArray()
 
                 split(json).forEach {
                     if (isJson(it)) {

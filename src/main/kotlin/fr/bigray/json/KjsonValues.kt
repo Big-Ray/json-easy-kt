@@ -1,36 +1,36 @@
 package fr.bigray.json
 
-interface JsonValue {
+interface KjsonValue {
     val value: Any?
     fun toJson(): String
 }
 
-data class JsonString(override val value: String = "null") : JsonValue {
+data class KjsonString(override val value: String = "null") : KjsonValue {
     override fun toJson(): String {
         return "\"${value.trim()}\""
     }
 
 }
 
-data class JsonNumber(override val value: Number) : JsonValue {
+data class KjsonNumber(override val value: Number) : KjsonValue {
     override fun toJson(): String {
         return this.value.toString()
     }
 
 }
 
-data class JsonNull(override val value: Any? = null) : JsonValue {
+data class KjsonNull(override val value: Any? = null) : KjsonValue {
     override fun toJson(): String {
         return "null"
     }
 
     companion object {
-        val NULL: JsonNull = JsonNull()
+        val NULL: KjsonNull = KjsonNull()
     }
 
 }
 
-data class JsonBoolean(override val value: Boolean) : JsonValue {
+data class KjsonBoolean(override val value: Boolean) : KjsonValue {
     override fun toJson(): String {
         return this.value.toString()
     }

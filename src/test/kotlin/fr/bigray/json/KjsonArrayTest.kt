@@ -5,42 +5,42 @@ import java.math.BigInteger
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class JsonArrayTest {
+class KjsonArrayTest {
 
     @Test
     fun toJson() {
 
-        val arr1 = JsonArray.createArray()
+        val arr1 = KjsonArray.createArray()
                 .el("arr1")
                 .el(12)
 
-        val obj1 = JsonObject.createObject()
+        val obj1 = KjsonObject.createObject()
                 .en("firstName", "Mick")
                 .en("lastName", "Tyson")
                 .en("age", 55)
-                .en("hobbies", JsonArray.createArray()
+                .en("hobbies", KjsonArray.createArray()
                         .el("Boxe")
                         .el("Catch")
                         .el("Movies"))
 
-        val obj2 = JsonObject.createObject()
+        val obj2 = KjsonObject.createObject()
                 .en("firstName", "Alain")
                 .en("lastName", "Prost")
                 .en("age", 65)
-                .en("hobbies", JsonArray.createArray()
+                .en("hobbies", KjsonArray.createArray()
                         .el("F1")
                         .el("Rally")
                         .el("Music"))
 
-        val obj3 = JsonObject.createObject()
+        val obj3 = KjsonObject.createObject()
                 .en("firstName", "Big")
                 .en("lastName", "Ray")
                 .en("age", 40)
-                .en("hobbies", JsonArray.createArray()
+                .en("hobbies", KjsonArray.createArray()
                         .el("guitar")
                         .el("basket ball"))
 
-        val actual = JsonArray.createArray()
+        val actual = KjsonArray.createArray()
                 .el(obj1)
                 .el(obj2)
                 .el(obj3)

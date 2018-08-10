@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.bigray</groupId>
-    <artifactId>json-easy-kt</artifactId>
+    <artifactId>Kjson</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>fr.bigray json-easy-kt</name>
+    <name>fr.bigray Kjson</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

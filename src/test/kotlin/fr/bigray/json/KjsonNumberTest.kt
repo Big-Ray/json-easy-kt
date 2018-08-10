@@ -4,14 +4,14 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class JsonNumberTest {
+class KjsonNumberTest {
 
     @Test
     fun toJson() {
-        val actual1 = JsonNumber(1234)
-        val actual2 = JsonNumber(12.34)
-        val actual3 = JsonNumber(12L)
-        val actual4 = JsonNumber(12.236985)
+        val actual1 = KjsonNumber(1234)
+        val actual2 = KjsonNumber(12.34)
+        val actual3 = KjsonNumber(12L)
+        val actual4 = KjsonNumber(12.236985)
 
         assertEquals(1234, actual1.value)
         assertEquals("1234", actual1.toJson())
@@ -28,8 +28,8 @@ class JsonNumberTest {
 
     @Test
     fun equals() {
-        val actual1 = JsonNumber(12.34)
-        val actual2 = JsonNumber(12.34)
+        val actual1 = KjsonNumber(12.34)
+        val actual2 = KjsonNumber(12.34)
 
         assertTrue(actual1 == actual2)
     }

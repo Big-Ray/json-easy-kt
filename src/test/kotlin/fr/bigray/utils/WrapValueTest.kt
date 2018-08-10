@@ -11,8 +11,8 @@ class WrapValueTest {
 
     @Test
     fun wrap() {
-        val jsonObject = JsonObject.createObject()
-        val jsonArray = JsonArray.createArray()
+        val jsonObject = KjsonObject.createObject()
+        val jsonArray = KjsonArray.createArray()
         val aString = "str value"
         val integer = 1234
         val bigDecimal = BigDecimal(1234)
@@ -23,15 +23,15 @@ class WrapValueTest {
 
         val aValueNotKnown = listOf<Pair<*, *>>()
 
-        assertTrue(WrapValue.wrap(jsonObject) is JsonObject)
-        assertTrue(WrapValue.wrap(jsonArray) is JsonArray)
-        assertTrue(WrapValue.wrap(aString) is JsonString)
-        assertTrue(WrapValue.wrap(integer) is JsonNumber)
-        assertTrue(WrapValue.wrap(bigDecimal) is JsonNumber)
-        assertTrue(WrapValue.wrap(bigInteger) is JsonNumber)
-        assertTrue(WrapValue.wrap(aDouble) is JsonNumber)
-        assertTrue(WrapValue.wrap(aLong) is JsonNumber)
-        assertTrue(WrapValue.wrap(aBoolean) is JsonBoolean)
+        assertTrue(WrapValue.wrap(jsonObject) is KjsonObject)
+        assertTrue(WrapValue.wrap(jsonArray) is KjsonArray)
+        assertTrue(WrapValue.wrap(aString) is KjsonString)
+        assertTrue(WrapValue.wrap(integer) is KjsonNumber)
+        assertTrue(WrapValue.wrap(bigDecimal) is KjsonNumber)
+        assertTrue(WrapValue.wrap(bigInteger) is KjsonNumber)
+        assertTrue(WrapValue.wrap(aDouble) is KjsonNumber)
+        assertTrue(WrapValue.wrap(aLong) is KjsonNumber)
+        assertTrue(WrapValue.wrap(aBoolean) is KjsonBoolean)
 
         assertFailsWith(Exception::class) { WrapValue.wrap(aValueNotKnown) }
 
@@ -44,9 +44,9 @@ class WrapValueTest {
         val stringIsFalseBoolean = "false"
         val stringIsNull = "null"
 
-        assertTrue(WrapValue.wrapStringValue(stringIsNumber) is JsonNumber)
-        assertTrue(WrapValue.wrapStringValue(stringIsTrueBoolean) is JsonBoolean)
-        assertTrue(WrapValue.wrapStringValue(stringIsFalseBoolean) is JsonBoolean)
-        assertTrue(WrapValue.wrapStringValue(stringIsNull) is JsonNull)
+        assertTrue(WrapValue.wrapStringValue(stringIsNumber) is KjsonNumber)
+        assertTrue(WrapValue.wrapStringValue(stringIsTrueBoolean) is KjsonBoolean)
+        assertTrue(WrapValue.wrapStringValue(stringIsFalseBoolean) is KjsonBoolean)
+        assertTrue(WrapValue.wrapStringValue(stringIsNull) is KjsonNull)
     }
 }
