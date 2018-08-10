@@ -14,13 +14,6 @@ class KjsonBooleanTest {
     }
 
     @Test
-    fun `to string`() {
-        val actual = KjsonBoolean(false)
-
-        assertEquals("JsonBoolean(value=false)", actual.toString())
-    }
-
-    @Test
     fun equals() {
         val actual1 = KjsonBoolean(false)
         val actual2 = KjsonBoolean(false)
