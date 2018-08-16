@@ -1,4 +1,4 @@
-package fr.bigray.json
+package fr.bigray.kjson
 
 import kotlin.test.*
 

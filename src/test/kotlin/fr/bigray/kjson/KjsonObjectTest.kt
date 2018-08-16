@@ -1,4 +1,4 @@
-package fr.bigray.json
+package fr.bigray.kjson
 
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -57,10 +57,10 @@ class KjsonObjectTest {
         assertTrue(actual["isStrong"]?.value as Boolean)
 
         assertTrue(actual["address"] is KjsonObject)
-        assertEquals(5, actual["address"]?.asKjsonObject()?.size)
+        assertEquals(5, actual["address"]?.asObject()?.size)
 
         assertTrue(actual["hobbies"] is KjsonArray)
-        assertEquals(3, actual["hobbies"]?.asKjsonArray()?.size)
+        assertEquals(3, actual["hobbies"]?.asArray()?.size)
 
     }
 

@@ -1,7 +1,7 @@
-package fr.bigray.json
+package fr.bigray.kjson
 
-import fr.bigray.parser.KjsonParser
 import fr.bigray.utils.WrapValue
+import java.util.*
 
 class KjsonObject private constructor() : LinkedHashMap<String, KjsonValue>(), KjsonValue {
     override val value: KjsonObject
@@ -11,8 +11,11 @@ class KjsonObject private constructor() : LinkedHashMap<String, KjsonValue>(), K
     { "\"${it.key}\":${it.value.toJson()}" }
 
     companion object {
-        @JvmStatic fun createObject(): KjsonObject = KjsonObject()
-        @JvmStatic fun fromJson(json: String): KjsonObject = KjsonParser.parse(json) as KjsonObject
+        @JvmStatic
+        fun createObject(): KjsonObject = KjsonObject()
+
+        @JvmStatic
+        fun fromJson(json: String): KjsonObject = Kjson.fromJson(json) as KjsonObject
     }
 
     fun en(key: String, entry: Any?): KjsonObject {

@@ -1,4 +1,4 @@
-package fr.bigray.json
+package fr.bigray.kjson
 
 import java.math.BigDecimal
 import java.math.BigInteger

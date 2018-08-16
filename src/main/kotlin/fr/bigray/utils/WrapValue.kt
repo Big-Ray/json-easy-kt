@@ -1,6 +1,6 @@
 package fr.bigray.utils
 
-import fr.bigray.json.*
+import fr.bigray.kjson.*
 import java.math.BigDecimal
 
 object WrapValue {

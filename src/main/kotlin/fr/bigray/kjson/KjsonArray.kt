@@ -1,6 +1,5 @@
-package fr.bigray.json
+package fr.bigray.kjson
 
-import fr.bigray.parser.KjsonParser
 import fr.bigray.utils.WrapValue
 
 class KjsonArray private constructor() : ArrayList<KjsonValue>(), KjsonValue {
@@ -10,8 +9,11 @@ class KjsonArray private constructor() : ArrayList<KjsonValue>(), KjsonValue {
     override fun toJson(): String = this.joinToString(prefix = "[", postfix = "]", separator = ",") { it.toJson() }
 
     companion object {
-        @JvmStatic fun createArray(): KjsonArray = KjsonArray()
-        @JvmStatic fun fromJson(json: String): KjsonArray = KjsonParser.parse(json) as KjsonArray
+        @JvmStatic
+        fun createArray(): KjsonArray = KjsonArray()
+
+        @JvmStatic
+        fun fromJson(json: String): KjsonArray = Kjson.fromJson(json) as KjsonArray
     }
 
     fun el(entry: Any?): KjsonArray {

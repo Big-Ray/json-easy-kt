@@ -1,14 +1,14 @@
-package fr.bigray.json
+package fr.bigray.kjson
 
 interface KjsonValue {
     val value: Any?
     fun toJson(): String
 
-    fun asKjsonObject(): KjsonObject {
+    fun asObject(): KjsonObject {
         return this as KjsonObject
     }
 
-    fun asKjsonArray(): KjsonArray {
+    fun asArray(): KjsonArray {
         return this as KjsonArray
     }
 }

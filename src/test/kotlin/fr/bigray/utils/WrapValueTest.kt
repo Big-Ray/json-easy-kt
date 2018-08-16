@@ -1,6 +1,6 @@
 package fr.bigray.utils
 
-import fr.bigray.json.*
+import fr.bigray.kjson.*
 import java.math.BigDecimal
 import java.math.BigInteger
 import kotlin.test.Test

@@ -1,6 +1,8 @@
 package fr.bigray.parser
 
-import fr.bigray.json.*
+import fr.bigray.kjson.KjsonArray
+import fr.bigray.kjson.KjsonObject
+import fr.bigray.kjson.KjsonValue
 import fr.bigray.utils.WrapValue.wrapStringValue
 
 object KjsonParser {
