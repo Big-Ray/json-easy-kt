@@ -1,2 +1,2 @@
-# json-easy-kt
-Json easy in Kotlin
+# Kjson
+Kjson in Kotlin
