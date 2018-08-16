@@ -1,30 +1,21 @@
 package fr.bigray.kjson
 
-import fr.bigray.utils.WrapValue
+class KjsonArray private constructor(override val value: List<KjsonValue>) : Iterable<KjsonValue>, KjsonValue {
+    override fun iterator(): Iterator<KjsonValue> {
+        return this.value.iterator()
+    }
 
-class KjsonArray private constructor() : ArrayList<KjsonValue>(), KjsonValue {
-    override val value: KjsonArray
-        get() = this
-
-    override fun toJson(): String = this.joinToString(prefix = "[", postfix = "]", separator = ",") { it.toJson() }
+    override fun toJson(): String = this.value.joinToString(prefix = "[", postfix = "]", separator = ",") { it.toJson() }
 
     companion object {
         @JvmStatic
-        fun createArray(): KjsonArray = KjsonArray()
+        fun createArray(values: List<KjsonValue>): KjsonArray = KjsonArray(values)
+
+        @JvmStatic
+        fun createArray(values: KjsonArray): KjsonArray = KjsonArray(values.toList())
 
         @JvmStatic
         fun fromJson(json: String): KjsonArray = Kjson.fromJson(json) as KjsonArray
     }
-
-    fun el(entry: Any?): KjsonArray {
-        this.add(WrapValue.wrap(entry))
-        return this
-    }
-
-    fun allEl(entries: List<KjsonValue>): KjsonArray {
-        this.addAll(entries)
-        return this
-    }
-
 
 }

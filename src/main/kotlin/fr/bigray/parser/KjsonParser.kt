@@ -1,8 +1,6 @@
 package fr.bigray.parser
 
-import fr.bigray.kjson.KjsonArray
-import fr.bigray.kjson.KjsonObject
-import fr.bigray.kjson.KjsonValue
+import fr.bigray.kjson.*
 import fr.bigray.utils.WrapValue.wrapStringValue
 
 object KjsonParser {
@@ -19,7 +17,7 @@ object KjsonParser {
 
         when {
             (OPEN_BRACE == firstCharacter).and(CLOSE_BRACE == lastCharacter) -> {
-                val jsonValue = KjsonObject.createObject()
+                val jsonValue = KjsonObjectBuilder()
 
                 split(json)
                         .map { it.trim().split(":".toRegex(), 2).toTypedArray() }
@@ -28,26 +26,26 @@ object KjsonParser {
                             val value = it[1]
 
                             if (isJson(value)) {
-                                jsonValue.en(key.trim(), parse(value))
+                                jsonValue.add(key.trim(), parse(value))
                             } else {
-                                jsonValue.en(key.trim(), wrapStringValue(value.trim()))
+                                jsonValue.add(key.trim(), wrapStringValue(value.trim()))
                             }
                         }
 
-                return jsonValue
+                return jsonValue.create()
             }
             (OPEN_BRACKET == firstCharacter).and(CLOSE_BRACKET == lastCharacter) -> {
-                val jsonValue = KjsonArray.createArray()
+                val jsonValue = KjsonArrayBuilder()
 
                 split(json).forEach {
                     if (isJson(it)) {
-                        jsonValue.el(parse(it))
+                        jsonValue.add(parse(it))
                     } else {
-                        jsonValue.el(wrapStringValue(it.trim()))
+                        jsonValue.add(wrapStringValue(it.trim()))
                     }
                 }
 
-                return jsonValue
+                return jsonValue.create()
             }
             else -> throw RuntimeException("Is not a valid json!")
         }
