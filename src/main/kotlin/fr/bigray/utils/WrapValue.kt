@@ -1,13 +1,14 @@
 package fr.bigray.utils
 
 import fr.bigray.json.*
+import java.math.BigDecimal
 
 object WrapValue {
     fun wrap(value: Any?): KjsonValue {
         return when (value) {
             is KjsonValue -> value
             is String -> KjsonString(value)
-            is Number -> KjsonNumber(value)
+            is Number -> KjsonNumber(BigDecimal(value.toString()))
             is Boolean -> KjsonBoolean(value)
             null -> KjsonNull.NULL
             else -> throw Exception("Unknown json type.")
@@ -16,15 +17,29 @@ object WrapValue {
 
     fun wrapStringValue(value: String): KjsonValue {
         return when {
-            isBoolean(value) -> KjsonBoolean(value.toBoolean())
-            isNull(value) -> KjsonNull()
-            isNumber(value) -> KjsonNumber(value.toBigDecimal())
+            stringIsBoolean(value) -> KjsonBoolean(value.toBoolean())
+            stringIsNull(value) -> KjsonNull()
+            stringIsNumber(value) -> KjsonNumber(value.toBigDecimal())
             else -> KjsonString(value)
         }
     }
 
-    private val isNumber = { value: String -> value.toBigDecimal().let { true } }
-    private val isBoolean = { value: String -> value.toBoolean() || java.lang.Boolean.FALSE.toString() == value }
-    private val isNull = { value: String? -> value.isNullOrEmpty() || value == "null" }
+    private fun stringIsNumber(value: String): Boolean {
+        try {
+            BigDecimal(value)
+        } catch (e: NumberFormatException) {
+            return false
+        }
+
+        return true
+    }
+
+    private fun stringIsBoolean(value: String): Boolean {
+        return value.toBoolean() || java.lang.Boolean.FALSE.toString() == value
+    }
+
+    private fun stringIsNull(value: String?): Boolean {
+        return value.isNullOrEmpty() || value == "null"
+    }
 
 }

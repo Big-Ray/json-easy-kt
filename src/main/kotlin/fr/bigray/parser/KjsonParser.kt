@@ -69,7 +69,7 @@ object KjsonParser {
 
         var inJsValue = false
 
-        loop@ for (i in jsonChar.indices) {
+        for (i in jsonChar.indices) {
             when (jsonChar[i].toInt()) {
                 OPEN_BRACE -> {
                     jsValueBuilder.append(jsonChar[i])
@@ -102,14 +102,15 @@ object KjsonParser {
                     inJsValue = false
                 }
                 COMMA -> {
-                    if (inJsValue) {
-                        jsValueBuilder.append(jsonChar[i])
-                        break@loop
+                    when {
+                        inJsValue -> jsValueBuilder.append(jsonChar[i])
+                        else -> {
+                            jsonEntryList.add(stringBuilder.toString())
+                            stringBuilder = StringBuilder()
+                        }
                     }
-                    jsonEntryList.add(stringBuilder.toString())
-                    stringBuilder = StringBuilder()
                 }
-                DBL_QUOTE -> if (i == jsonChar.size - 1) {
+                DBL_QUOTE -> if (i == lastCharacterIdx) {
                     jsonEntryList.add(stringBuilder.toString())
                 }
                 else -> when {

@@ -3,6 +3,14 @@ package fr.bigray.json
 interface KjsonValue {
     val value: Any?
     fun toJson(): String
+
+    fun asKjsonObject(): KjsonObject {
+        return this as KjsonObject
+    }
+
+    fun asKjsonArray(): KjsonArray {
+        return this as KjsonArray
+    }
 }
 
 data class KjsonString(override val value: String = "null") : KjsonValue {
