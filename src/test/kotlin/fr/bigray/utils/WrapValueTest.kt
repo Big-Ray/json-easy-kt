@@ -12,7 +12,7 @@ class WrapValueTest {
     @Test
     fun wrap() {
         val jsonObject = KjsonObject.createObject()
-        val jsonArray = KjsonArray.createArray()
+        val jsonArray = KjsonArrayBuilder().create()
         val aString = "str value"
         val integer = 1234
         val bigDecimal = BigDecimal(1234)
